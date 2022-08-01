@@ -15,6 +15,37 @@ const material = new THREE.MeshBasicMaterial({ color: 0xff0000 })
 const mesh = new THREE.Mesh(geometry, material)
 scene.add(mesh)
 
+// mesh.position.x =   0.7
+// mesh.position.y = - 0.6
+// mesh.position.z =   1
+
+//Shortcut di quanto scritto sopra:
+
+mesh.position.set(0.7, -0.2, 1)
+
+
+// SCALE
+
+// mesh.scale.x = 2
+// mesh.scale.y = 0.5
+// mesh.scale.z = 0.5
+
+//Shortcut di quanto scritto sopra:
+
+mesh.scale.set(2, 0.5, 0.5)
+
+
+// ROTATION
+mesh.rotation.reorder('YXZ') // La prospettiva della rotazione cambia tutta, è relativa a come l'oggetto è impostato al momento.
+                             // Quindi riordino tutta la prospettiva della rotazione con .reorder()
+mesh.rotation.x = Math.PI * 0.25
+mesh.rotation.y = Math.PI * 0.25
+
+// AXES HELPER
+
+const axesHelper = new THREE.AxesHelper() //Se metto un numero come parametro dentro alle parentesi, l'axes diventa più grande.
+scene.add(axesHelper)
+
 /**
  * Sizes
  */
@@ -27,7 +58,9 @@ const sizes = {
  * Camera
  */
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height)
-camera.position.z = 3
+camera.position.z = 4
+camera.position.y = 1
+camera.position.x = 1
 scene.add(camera)
 
 /**
